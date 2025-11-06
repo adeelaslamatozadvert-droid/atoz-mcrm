@@ -13,6 +13,7 @@ const forgetPassword = async (req, res, { userModel }) => {
   const UserPassword = mongoose.model(userModel + 'Password');
   const User = mongoose.model(userModel);
   const { email } = req.body;
+  // console.log("Here is email: ",email);
 
   // validate
   const objectSchema = Joi.object({
@@ -64,7 +65,7 @@ const forgetPassword = async (req, res, { userModel }) => {
     email,
     name: user.name,
     link,
-    subject: 'Reset your password | atoz',
+    subject: 'Reset your password | atoz mcrm',
     idurar_app_email,
     type: 'passwordVerfication',
   });

@@ -1,3 +1,6 @@
+process.on('uncaughtException', console.error);
+process.on('unhandledRejection', console.error);
+
 require('module-alias/register');
 const mongoose = require('mongoose');
 const { globSync } = require('glob');

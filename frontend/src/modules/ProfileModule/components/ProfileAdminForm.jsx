@@ -57,7 +57,7 @@ export default function AdminForm({ isUpdateForm = false }) {
         <Input autoComplete="off" />
       </Form.Item>
 
-      <Form.Item
+      {/* <Form.Item
         name="file"
         label={translate('Photo')}
         valuePropName="fileList"
@@ -71,7 +71,7 @@ export default function AdminForm({ isUpdateForm = false }) {
         >
           <Button icon={<UploadOutlined />}>{translate('click_to_upload')}</Button>
         </Upload>
-      </Form.Item>
+      </Form.Item> */}
     </>
   );
 }

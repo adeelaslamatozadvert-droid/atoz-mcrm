@@ -4,7 +4,6 @@ const cors = require('cors');
 const compression = require('compression');
 
 const cookieParser = require('cookie-parser');
-
 const coreAuthRouter = require('./routes/coreRoutes/coreAuth');
 const coreApiRouter = require('./routes/coreRoutes/coreApi');
 const coreDownloadRouter = require('./routes/coreRoutes/coreDownloadRouter');
@@ -17,6 +16,8 @@ const erpApiRouter = require('./routes/appRoutes/appApi');
 const fileUpload = require('express-fileupload');
 // create our Express app
 const app = express();
+
+// app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(
   cors({
@@ -32,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 
 // // default options
-// app.use(fileUpload());
+app.use(fileUpload());
 
 // Here our API Routes
 

@@ -26,11 +26,32 @@ const app = express();
 //   })
 // );
 
+// app.use(cors({
+//   origin: "https://atoz-mcrm.vercel.app/",
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true
+// }));
+
+const allowedOrigins = [
+  "https://atoz-mcrm-hj14v23s0-adeels-projects-8363061a.vercel.app",
+  "http://localhost:3000", // for local dev
+];
+
 app.use(cors({
-  origin: "https://atoz-mcrm.vercel.app/",
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      console.log("❌ Blocked by CORS:", origin);
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  credentials: true,
 }));
+
 
 app.use(cookieParser());
 app.use(express.json());

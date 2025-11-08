@@ -14,15 +14,15 @@ const errorHandlers = require('./handlers/errorHandlers');
 const erpApiRouter = require('./routes/appRoutes/appApi');
 
 const fileUpload = require('express-fileupload');
+const app = require('./app');
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// app.use('/public', express.static(path.join(__dirname, 'public')));
-
-// app.use(
-//   cors({
-//     origin: true,
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: "https://atoz-mcrm-git-main-adeels-projects-8363061a.vercel.app",
+    credentials: true,
+  })
+);
 
 // app.use(cors({
 //   origin: "https://atoz-mcrm.vercel.app/",
@@ -67,7 +67,7 @@ for (const filePath of modelsFiles) {
 }
 
 // Start our app!
-const app = require('./app');
+
 app.set('port', process.env.PORT || 8888);
 const server = app.listen(app.get('port'), () => {
   console.log(`Express running → On PORT : ${server.address().port}`);
